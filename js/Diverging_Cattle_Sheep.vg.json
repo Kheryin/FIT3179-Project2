@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Cattle and Sheep Exports from 2016 – 2020",
+  "title": "Cattle and Sheep Exports per Quarter from 2016 – 2020",
   "data": { "url": "https://raw.githubusercontent.com/Kheryin/FIT3179-Project2/main/data/AustraliaLivestockExports3.csv"},
   "transform": [
     {"filter": {"field": "Species", "oneOf": ["Cattle", "Sheep"]}},
@@ -15,7 +15,7 @@
   "mark": "bar",
   "encoding": {
     "y": {
-      "field": "Date","timeUnit":"yearmonth", "sort": "descending", "title": "Date"
+      "field": "Date","timeUnit":"yearquarter", "sort": "descending", "title": "Date"
     },
     "x": {
       "aggregate": "sum", "field": "Quantity",
@@ -25,7 +25,7 @@
     "color": {
       "field": "Species",
       "scale": {"range": ["#675193", "#ca8861"]},
-      "legend": {"orient": "top", "title": null}
+      "legend": {"orient": "right", "title": null}
     }
   },
   "config": {
