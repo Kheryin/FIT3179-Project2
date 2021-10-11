@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Cattle and Sheep Exports from 2016 – 2020",
+  "data": { "url": "https://raw.githubusercontent.com/Kheryin/FIT3179-Project2/main/data/AustraliaLivestockExports3.csv"},
+  "transform": [
+    {"filter": {"field": "Species", "oneOf": ["Cattle", "Sheep"]}},
+    {
+ "calculate": "timeParse(datum['Date'], '%d/%m/%Y')",
+ "as": "Date"
+ },
+    {"calculate": "datum.Species == 'Cattle' ? -datum.Quantity : datum.Quantity", "as": "Quantity"}
+  ],
+  "width": 500,
+  "height": 400,
+  "mark": "bar",
+  "encoding": {
+    "y": {
+      "field": "Date","timeUnit":"yearmonth", "sort": "descending", "title": "Date"
+    },
+    "x": {
+      "aggregate": "sum", "field": "Quantity",
+      "title": "Quantity",
+      "axis": {"format": "s"}
+    },
+    "color": {
+      "field": "Species",
+      "scale": {"range": ["#675193", "#ca8861"]},
+      "legend": {"orient": "top", "title": null}
+    }
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"grid": false}
+  }
+}
