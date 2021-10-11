@@ -24,8 +24,7 @@
 
   "mark": "line",
   "encoding": {
-    "x": {"field": "Date","timeUnit": "yearmonth",
-    "axis": {"tickCount": 10, "grid": false}},
+    "x": {"field": "Date","timeUnit": "yearmonth", "title": "Date", "axis": {"tickCount": 10, "grid": false}},
     "y": {"field": "Quantity", "type": "quantitative"},
     "color": {"field": "Species", "type": "nominal"}
   }
