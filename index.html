@@ -26,9 +26,12 @@
    <!-- pure grid group -->
     <div class="pure-g">
       <div class="pure-u-1-1">
-        <h1>Multiple Visualisations</h1>
-        <p>This page demonstrates how you can use pure.css grid for your layout.</p>
+        <h1>Australia Livestock Exports</h1>
+        <p>Description.</p>
       </div>
+      <div class="pure-u-2-3">
+          <img src="LivestockPic.jpg" />
+        </div>
     </div>
   <!-- end pure grid group -->
 
@@ -46,10 +49,28 @@
     </div>
     <!-- end pure grid group -->
 
+   <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-3">
+        <div id="vis2"  class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-3">
+        <div id="vis3"  class="vis-container"></div>
+      </div>
+      <div class="pure-u-1-3">
+        <div class="description description-left">
+          <h2>This is the third section</h2>
+          <p>Using all three columns without merging. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Egestas purus viverra accumsan in nisl.</p>
+        </div>
+      </div>
+    
+    </div>
+    <!-- end pure grid group -->
+      
     <!-- pure grid group -->
     <div class="pure-g">
-        <div class="pure-u-2-3">
-          <div id="vis2"  class="vis-container"></div>
+        <div class="pure-u-3-3">
+          <div id="vis4"  class="vis-container"></div>
         </div>
         <div class="pure-u-1-3">
           <div class="description description-right">
@@ -60,28 +81,25 @@
       
     </div>
     <!-- end pure grid group -->
-
-    <!-- pure grid group -->
+   
+   
+   <!-- pure grid group -->
     <div class="pure-g">
-      <div class="pure-u-1-3">
-        <div class="description description-left">
-          <h2>This is the third section</h2>
-          <p>Using all three columns without merging. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Egestas purus viverra accumsan in nisl.</p>
+        <div class="pure-u-3-3">
+          <div class="description description-right">
+            <h2>This is the second section</h2>
+            <p>Similar to the previous section, but the colum partition is swapped. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa sapien faucibus et molestie ac feugiat sed. Egestas purus viverra accumsan in nisl.</p>
+          </div>
         </div>
-      </div>
-      <div class="pure-u-1-3">
-        <div id="vis4"  class="vis-container"></div>
-      </div>
-      <div class="pure-u-1-3">
-        <div id="vis3"  class="vis-container"></div>
-      </div>
-    
+      
     </div>
     <!-- end pure grid group -->
+
+    
   
     <div class="pure-g">
       <div class="pure-u-1-1 small-font">
-        <p>This visualisation is created by <a href="https://github.com/KadekSatriadi" target="_blank">Kadek Satriadi</a>. The datasource is <a href="#"" target="_blank">some data repository online</href>.</p>
+        <p>This visualisation is created by <a href="https://github.com/Kheryin" target="_blank">Kher Yin H'ng</a>. The datasource is <a href="#"" target="_blank">some data repository online</href>.</p>
       </div>
     </div>
   
@@ -89,8 +107,10 @@
   </div> <!-- end page -->
    
 <script type="text/javascript">
-  var specVis1 = "./normalised-stacked-bars-responsive.json";
-  var specVis2= "./line-chart-responsive.json";
+  var specVis1 = "js/choropleth_map.vg.json";
+  var specVis2= "js/line_chart.vg.json";
+  var specVis3= "js/diverging_cattle_sheep.vg.json";
+  var specVis4= "js/enduse_species_plot.vg.json";
 
   vegaEmbed('#vis1', specVis1, {"actions": false});
   
@@ -98,11 +118,11 @@
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 
-  vegaEmbed('#vis3', specVis1, {"actions": false}).then(function(result) {
+  vegaEmbed('#vis3', specVis3, {"actions": false}).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 
-  vegaEmbed('#vis4', specVis2, {"actions": false}).then(function(result) {
+  vegaEmbed('#vis4', specVis4, {"actions": false}).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>
