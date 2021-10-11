@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "A trellis bar cha",
+  "title": "End Use for each Species",
   "data": { "url": "https://raw.githubusercontent.com/Kheryin/FIT3179-Project2/main/data/AustraliaLivestockExports3.csv"},
   "transform": [
     {
@@ -8,19 +8,18 @@
  "as": "Date"
  }, 
  {
-      "calculate": "{'Alpacas':'🦙','Buffalo':'🦙','Camels': '🦙','Cattle': '🐄', 'Deer': '🐖', 'Goats': '🦙','Sheep': '🐏'}[datum.Species]",
+      "calculate": "{'Alpacas':'🦙','Buffalo':'🐃','Camels': '🐫','Cattle': '🐄', 'Deer': '🦌', 'Goats': '🐐','Sheep': '🐏'}[datum.Species]",
       "as": "emoji"
     }
   ],
-  "facet": {"field": "EndUse", "title": "End Use"},
+  "facet": {"field": "EndUse", "title": null},
   "spec":{
 "layer": [
     {
       "mark": "rule",
       "encoding": {
         "x": {"aggregate": "sum", "field": "Quantity", "type": "quantitative", "title": "Quantity"},
-        "y": {"field": "Species", "type": "nominal"},
-        "color": {"field": "Species", "type": "nominal"}
+        "y": {"field": "Species", "type": "nominal"}
       }
     },
     {
@@ -28,7 +27,6 @@
       "encoding": {
         "x": {"aggregate": "sum", "field": "Quantity", "type": "quantitative", "title": "Quantity"},
         "y": {"field": "Species", "type": "nominal"},
-        "color": {"field": "Species", "type": "nominal"},
         "text": {"field": "emoji", "type": "nominal"},
     "size": {"value": 15}
       }
