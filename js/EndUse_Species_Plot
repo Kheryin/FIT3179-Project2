@@ -1,8 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "A trellis bar cha",
-  "width": 300,
-  "height": 150,
   "data": { "url": "https://raw.githubusercontent.com/Kheryin/FIT3179-Project2/main/data/AustraliaLivestockExports3.csv"},
   "transform": [
     {
@@ -14,7 +12,7 @@
   "spec":{
 "layer": [
     {
-      "mark": "bar",
+      "mark": "rule",
       "encoding": {
         "x": {"aggregate": "sum", "field": "Quantity", "type": "quantitative", "title": "Quantity"},
         "y": {"field": "Species", "type": "nominal"},
