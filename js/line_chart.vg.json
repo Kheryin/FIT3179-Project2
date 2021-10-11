@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 1000,
-  "height": 500,
-  "description": "Stock prices of 5 Tech Companies over Time.",
+  "width": 600,
+  "height": 400,
+  "title": "Australia Livestock Exports from 2016 – 2020",
   "data": {"url": "https://raw.githubusercontent.com/Kheryin/FIT3179-Project2/main/data/AustraliaLivestockExports3.csv"},
 
   "transform": [
