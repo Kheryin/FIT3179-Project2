@@ -1,0 +1,71 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "A population pyramid for the US in 2000.",
+  "data": { "url": "https://raw.githubusercontent.com/Kheryin/FIT3179-Project2/main/data/AustraliaLivestockExports3.csv"},
+  "transform": [
+    {
+ "calculate": "timeParse(datum['Date'], '%d/%m/%Y')",
+ "as": "Date"
+ }
+  ],
+  "spacing": 0,
+  "hconcat": [{
+    "transform": [{
+      "filter": {"field": "Species", "equal": "Cattle"}
+    }],
+    "title": "Cattle",
+    "mark": "bar",
+    "encoding": {
+      "y": {
+        "field": "Date", "timeUnit": "yearquarter", "axis": null, "sort": "descending"
+      },
+      "x": {
+        "aggregate": "sum", "field": "Quantity",
+        "title": "Quantity",
+        "axis": {"format": "s"},
+        "sort": "descending"
+      },
+      "color": {
+        "field": "Species",
+        "scale": {"range": ["#675193", "#ca8861"]},
+        "legend": null
+      }
+    }
+  }, {
+    "width": 20,
+    "view": {"stroke": null},
+    "mark": {
+      "type": "text",
+      "align": "center"
+    },
+    "encoding": {
+      "y": {"field": "Date", "timeUnit":"yearquarter", "type": "temporal", "axis": null, "sort": "descending"},
+      "text": {"field": "Date", "timeUnit":"yearquarter"}
+    }
+  }, {
+    "transform": [{
+      "filter": {"field": "Species", "equal": "Sheep"}
+    }],
+    "title": "Sheep",
+    "mark": "bar",
+    "encoding": {
+      "y": {
+        "field": "Date", "timeUnit":"yearquarter", "title": null,
+        "axis": null, "sort": "descending"
+      },
+      "x": {
+        "aggregate": "sum", "field": "Quantity",
+        "title": "Quantity",
+        "axis": {"format": "s"}
+      },
+      "color": {
+        "field": "Species",
+        "legend": null
+      }
+    }
+  }],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"grid": false}
+  }
+}
