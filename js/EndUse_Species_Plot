@@ -6,7 +6,11 @@
     {
  "calculate": "timeParse(datum['Date'], '%d/%m/%Y')",
  "as": "Date"
- }
+ }, 
+ {
+      "calculate": "{'Alpacas':'🦙','Buffalo':'🦙','Camels': '🦙','Cattle': '🐄', 'Deer': '🐖', 'Goats': '🦙','Sheep': '🐏'}[datum.Species]",
+      "as": "emoji"
+    }
   ],
   "facet": {"field": "EndUse", "title": "End Use"},
   "spec":{
@@ -20,11 +24,13 @@
       }
     },
     {
-      "mark": "point",
+      "mark": {"type": "text", "baseline": "middle"},
       "encoding": {
         "x": {"aggregate": "sum", "field": "Quantity", "type": "quantitative", "title": "Quantity"},
         "y": {"field": "Species", "type": "nominal"},
-        "color": {"field": "Species", "type": "nominal"}
+        "color": {"field": "Species", "type": "nominal"},
+        "text": {"field": "emoji", "type": "nominal"},
+    "size": {"value": 15}
       }
     }
   ]
