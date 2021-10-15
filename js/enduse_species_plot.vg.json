@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "End Use for each Species",
   "width":"container",
-  "data": { "url": "https://raw.githubusercontent.com/Kheryin/FIT3179-Project2/main/data/AustraliaLivestockExports3.csv"},
+  "data": { "url": "https://raw.githubusercontent.com/Kheryin/FIT3179-Project2/main/data/AustraliaLivestockExportsData.csv"},
   "transform": [
     {
  "calculate": "timeParse(datum['Date'], '%d/%m/%Y')",
@@ -13,7 +13,7 @@
       "as": "emoji"
     }
   ],
-  "facet": {"field": "EndUse", "title": null},
+  "facet": {"field": "End Use", "title": null},
   "spec":{
 "layer": [
     {
