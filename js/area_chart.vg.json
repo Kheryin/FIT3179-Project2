@@ -1,0 +1,25 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 300, "height": 200,
+  "data": {"url": "https://raw.githubusercontent.com/Kheryin/FIT3179-Project2/main/data/AustraliaLivestockExportsData.csv"},
+  "transform": [
+    {
+      "calculate": "timeParse(datum['Date'], '%d/%m/%Y')",
+      "as": "Date"
+      }
+      ],
+  "mark": "area",
+  "encoding": {
+    "x": {
+      "timeUnit": "yearmonth", "field": "Date", "title": "Date",
+      "axis": {"format": "%Y"}
+    },
+    "y": {
+      "aggregate": "sum", "field": "Quantity"
+    },
+    "color": {
+      "field": "Species",
+      "scale": {"scheme": "category20b"}
+    }
+  }
+}
