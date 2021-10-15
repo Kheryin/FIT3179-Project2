@@ -39,7 +39,7 @@ null,
     "tooltip":[
      {"field": "Species", "type":"nominal"},
      {"field": "Destination Country", "type":"nominal"},
-     {"field": "mean_Quantity", "type":"quantitative", "format": ".0f"}
+     {"field": "mean_Quantity", "type":"quantitative", "format": ",.0f"}
     ]
   },
   "config": {
