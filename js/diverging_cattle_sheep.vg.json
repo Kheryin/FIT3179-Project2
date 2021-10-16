@@ -20,7 +20,7 @@
     "x": {
       "aggregate": "sum", "field": "Quantity",
       "title": "Quantity",
-      "axis": {"format": "s"}
+      "axis": {"labelExpr": "datum.label[0]>=0 ? datum.label : datum.label[1]+'00,000'"}
     },
     "color": {
       "field": "Species",
