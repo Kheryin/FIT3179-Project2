@@ -18,8 +18,8 @@
       },
       "mark": {"type": "circle", "tooltip": {"content": "data"}},
       "encoding": {
-        "longitude": {"field": "Port Longitude", "type": "quantitative"},
-        "latitude": {"field": "Port Latitude", "type": "quantitative"},
+        "longitude": {"field": "PortLongitude", "type": "quantitative"},
+        "latitude": {"field": "PortLatitude", "type": "quantitative"},
         "size": {"aggregate":"sum",
           "field": "Quantity",
           "type": "quantitative",
