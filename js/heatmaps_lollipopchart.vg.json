@@ -12,7 +12,9 @@
     }
   ],
 "vconcat":[
-  {"params": [{"name": "highlight", "select": "point"}],
+  {"params": [{"name": "highlight", "select": {"type": "point","encodings": ["x", "y"]}}],
+
+
   "mark": "rect",
   "encoding": {
     "x": {"field": "Date", "timeUnit":"month", "type": "ordinal", "title": "Month"},
@@ -28,28 +30,38 @@
     },
     "opacity": {
       "condition": {"param": "highlight", "value": 1},
-      "value": 0.5
+      "value": 0.1
     },
-    "order": {"condition": {"param": "highlight", "value": 1}, "value": 0},
 
     "tooltip":[
      {"field": "Date", "timeUnit":"year", "type": "ordinal", "title": "Year"},
      {"field": "Date", "timeUnit":"month", "type": "ordinal", "title": "Month"},
-     {"aggregate":"sum", "field": "Quantity", "type":"quantitative", "format": ",.0f", "title":"Quantity"}
+     {"aggregate":"sum", "field": "Quantity", "type":"quantitative", "format": ",", "title":"Quantity"}
     ]
   }
   },
   
-  {
+  {"transform": [
+        {
+          "filter": {
+            "param": "highlight"
+          }
+        }
+      ],
   "mark": "rect",
   "encoding": {
-    "x": {"field": "DestinationCountry", "type": "nominal"},
-    "y": {"field": "Species", "type": "nominal"},
-    "color": {"aggregate":"sum", "field": "Quantity","type": "quantitative"},
+    "x": {"field": "DestinationCountry", "type": "nominal", "axis":{"labelAngle": -50},"title":"Destination Country"},
+    "y": {"field": "Species", "type": "nominal", 
+    "scale": {"domain": ["Alpacas", "Buffalo", "Camels", "Cattle", "Deer", "Goats", "Sheep"]
+      }},
+
+    "color": {"aggregate":"sum", "field": "Quantity","type": "quantitative", "legend": {"orient": "right", "title": "Species"}},
+    
+    
     "tooltip":[
      {"field": "Species", "type":"nominal"},
-     {"field": "DestinationCountry", "type":"nominal"},
-     {"field": "mean_Quantity", "type":"quantitative", "format": ",.0f"}
+     {"field": "DestinationCountry", "type":"nominal", "title":"Destination Country"},
+     {"aggregate":"sum", "field": "Quantity", "type":"quantitative", "format": ",", "title":"Quantity"}
     ]
   }
   }
