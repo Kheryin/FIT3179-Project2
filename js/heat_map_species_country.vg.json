@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "data": {"url": "https://raw.githubusercontent.com/Kheryin/FIT3179-Homework10/main/data/AustraliaLivestockExports3.csv"},
+  "data": {"url": "https://raw.githubusercontent.com/Kheryin/FIT3179-Project2/main/data/AustraliaLivestockExportsData.csv"},
   "title":"Average Quantity of Livestock Species Exports to Countries",
   "params": [
 {
@@ -28,17 +28,17 @@ null,
 {"filter": "End_Use_Selection == null || datum.EndUse == End_Use_Selection"},
 {
   "aggregate": [{"op": "mean", "field": "Quantity", "as": "mean_Quantity"}],
-  "groupby": ["Destination Country", "Species"]
+  "groupby": ["DestinationCountry", "Species"]
 }
 ],
   "mark": "rect",
   "encoding": {
-    "x": {"field": "Destination Country", "type": "nominal"},
+    "x": {"field": "DestinationCountry", "type": "nominal"},
     "y": {"field": "Species", "type": "nominal"},
     "color": {"field": "mean_Quantity","type": "quantitative"},
     "tooltip":[
      {"field": "Species", "type":"nominal"},
-     {"field": "Destination Country", "type":"nominal"},
+     {"field": "DestinationCountry", "type":"nominal"},
      {"field": "mean_Quantity", "type":"quantitative", "format": ",.0f"}
     ]
   },
