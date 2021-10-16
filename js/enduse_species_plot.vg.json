@@ -13,7 +13,7 @@
       "as": "emoji"
     }
   ],
-  "facet": {"field": "End Use", "title": null},
+  "facet": {"field": "EndUse", "title": null},
   "spec":{
 "layer": [
     {
