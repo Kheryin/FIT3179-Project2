@@ -1,1 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "https://raw.githubusercontent.com/Kheryin/FIT3179-Project2/main/data/AustraliaLivestockExportsData.csv"},
+  "transform": [
+    {
+ "calculate": "timeParse(datum['Date'], '%d/%m/%Y')",
+ "as": "Date"
+ }, 
+ {
+      "calculate": "{'Alpacas':'🦙','Buffalo':'🐃','Camels': '🐫','Cattle': '🐄', 'Deer': '🦌', 'Goats': '🐐','Sheep': '🐏'}[datum.Species]",
+      "as": "emoji"
+    }
+  ],
+"vconcat":[
+  {"params": [{"name": "highlight", "select": "point"}],
+  "mark": "rect",
+  "encoding": {
+    "x": {"field": "Date", "timeUnit":"month", "type": "ordinal", "title": "Month"},
+    "y": {"field": "Date", "timeUnit":"year", "type": "ordinal", "title": "Year"},
+    "color": {"aggregate":"sum", "field": "Quantity", "type": "quantitative"},
+    "stroke": {
+      "condition": {
+        "param": "highlight",
+        "empty": false,
+        "value": "black"
+      },
+      "value": null
+    },
+    "opacity": {
+      "condition": {"param": "highlight", "value": 1},
+      "value": 0.5
+    },
+    "order": {"condition": {"param": "highlight", "value": 1}, "value": 0},
 
+    "tooltip":[
+     {"field": "Date", "timeUnit":"year", "type": "ordinal", "title": "Year"},
+     {"field": "Date", "timeUnit":"month", "type": "ordinal", "title": "Month"},
+     {"aggregate":"sum", "field": "Quantity", "type":"quantitative", "format": ",.0f", "title":"Quantity"}
+    ]
+  }
+  },
+  
+  {
+  "mark": "rect",
+  "encoding": {
+    "x": {"field": "DestinationCountry", "type": "nominal"},
+    "y": {"field": "Species", "type": "nominal"},
+    "color": {"aggregate":"sum", "field": "Quantity","type": "quantitative"},
+    "tooltip":[
+     {"field": "Species", "type":"nominal"},
+     {"field": "DestinationCountry", "type":"nominal"},
+     {"field": "mean_Quantity", "type":"quantitative", "format": ",.0f"}
+    ]
+  }
+  }
+ 
+],
+"config": {
+    "axis": {"grid": true, "tickBand": "extent"}
+  }
+
+}
