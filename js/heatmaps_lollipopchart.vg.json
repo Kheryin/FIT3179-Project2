@@ -56,7 +56,7 @@
     "scale": {"domain": ["Alpacas", "Buffalo", "Camels", "Cattle", "Deer", "Goats", "Sheep"]
       }},
 
-    "color": {"aggregate":"sum", "field": "Quantity","type": "quantitative", "legend": {"orient": "right", "title": "Quantity"}, "scale": {"scheme": "blues"}},
+    "color": {"aggregate":"sum", "field": "Quantity","type": "quantitative", "legend": {"orient": "right", "title": "Quantity"}, "scale": {"scheme": "yellowgreenblue"}},
     
     
     "tooltip":[
