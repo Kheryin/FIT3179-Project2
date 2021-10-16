@@ -15,7 +15,7 @@
   "mark": "bar",
   "encoding": {
     "y": {
-      "field": "Date","timeUnit":"yearquarter", "sort": "descending", "title": "Date"
+      "field": "Date","timeUnit":"yearquarter", "sort": "descending", "title": "Date", "axis": {"labelExpr": "datum.label[3]==1 ? '' : datum.label"}
     },
     "x": {
       "aggregate": "sum", "field": "Quantity",
@@ -25,8 +25,14 @@
     "color": {
       "field": "Species",
       "scale": {"range": ["#675193", "#ca8861"]},
-      "legend": {"orient": "right", "title": null}
-    }
+      "legend": {"orient": "right", "title": "Species"}
+    },
+  "tooltip": [
+{"field": "Species", "type": "nominal"},
+{"field": "Date", "timeUnit":"year", "title":"Year"},
+{"field": "Date", "timeUnit":"quarter", "title":"Quarter"},
+{"aggregate":"sum", "field": "Quantity", "type": "quantitative", "format": ",", "title":"Quantity"}
+]
   },
   "config": {
     "view": {"stroke": null},
