@@ -14,7 +14,6 @@
 "vconcat":[
   {"params": [{"name": "highlight", "select": {"type": "point","encodings": ["x", "y"]}}],
 
-
   "mark": "rect",
   "encoding": {
     "x": {"field": "Date", "timeUnit":"month", "type": "ordinal", "title": "Month"},
@@ -36,7 +35,7 @@
     "tooltip":[
      {"field": "Date", "timeUnit":"year", "type": "ordinal", "title": "Year"},
      {"field": "Date", "timeUnit":"month", "type": "ordinal", "title": "Month"},
-     {"aggregate":"sum", "field": "Quantity", "type":"quantitative", "format": ",", "title":"Quantity"}
+     {"aggregate":"sum", "field": "Quantity", "type":"quantitative", "format": ",", "title":"Total Quantity"}
     ]
   }
   },
