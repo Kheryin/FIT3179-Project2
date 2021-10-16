@@ -9,7 +9,7 @@
  "calculate": "timeParse(datum['Date'], '%d/%m/%Y')",
  "as": "Date"
  },
-    {"calculate": "datum.Species == 'Cattle' ? -datum.Quantity : datum.Quantity", "as": "Quantity"}
+    {"calculate": "datum.Species == 'Cattle' ? -datum.Quantity : datum.Quantity", "as": "Quantity1"}
   ],
   
   "mark": "bar",
@@ -18,9 +18,9 @@
       "field": "Date","timeUnit":"yearquarter", "sort": "descending", "title": "Date", "axis": {"labelExpr": "datum.label[3]==1 ? '' : datum.label"}
     },
     "x": {
-      "aggregate": "sum", "field": "Quantity",
+      "aggregate": "sum", "field": "Quantity1",
       "title": "Quantity",
-      "axis": {"labelExpr": "datum.label[0]>=0 ? datum.label : datum.label[1]+'00,000'"}
+      "axis": {"labelExpr": "datum.label[0]>=0 ? datum.label : datum.label[1]+'00,000'", "tickCount": 6}
     },
     "color": {
       "field": "Species",
