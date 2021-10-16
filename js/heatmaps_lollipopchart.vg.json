@@ -18,7 +18,7 @@
   "encoding": {
     "x": {"field": "Date", "timeUnit":"month", "type": "ordinal", "title": "Month"},
     "y": {"field": "Date", "timeUnit":"year", "type": "ordinal", "title": "Year"},
-    "color": {"aggregate":"sum", "field": "Quantity", "type": "quantitative"},
+    "color": {"aggregate":"sum", "field": "Quantity","type": "quantitative"},
     "stroke": {
       "condition": {
         "param": "highlight",
@@ -29,7 +29,7 @@
     },
     "opacity": {
       "condition": {"param": "highlight", "value": 1},
-      "value": 0.1
+      "value": 0.4
     },
 
     "tooltip":[
@@ -49,12 +49,14 @@
       ],
   "mark": "rect",
   "encoding": {
-    "x": {"field": "DestinationCountry", "type": "nominal", "axis":{"labelAngle": -50},"title":"Destination Country"},
+    "x": {"field": "DestinationCountry", "type": "nominal", "axis":{"labelAngle": -50},"title":"Destination Country", 
+    "scale": {"domain": ["Argentina", "Bangladesh", "Brunei Darussalam", "Cambodia", "Canada", "Chile", "China", "Fiji", "Hong Kong", "India", "Indonesia", "Israel", "Japan", "Jordan", "Kazakhstan", "Kuwait", "Lebanon", "Malaysia", "Mexico", "Nepal", "New Zealand", "Oman", "Pakistan", "Philippines", "Qatar", "Russia", "Singapore", "South Korea", "Sri Lanka", "Taiwan", "Thailand", "Turkey", "United Arab Emirates", "United Kingdom", "Uruguay", "Uzbekistan", "Vietnam"]
+      }},
     "y": {"field": "Species", "type": "nominal", 
     "scale": {"domain": ["Alpacas", "Buffalo", "Camels", "Cattle", "Deer", "Goats", "Sheep"]
       }},
 
-    "color": {"aggregate":"sum", "field": "Quantity","type": "quantitative", "legend": {"orient": "right", "title": "Species"}},
+    "color": {"aggregate":"sum", "field": "Quantity","type": "quantitative", "legend": {"orient": "right", "title": "Quantity"}, "scale": {"scheme": "blues"}},
     
     
     "tooltip":[
