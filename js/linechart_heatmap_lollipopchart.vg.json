@@ -108,7 +108,7 @@
       "tooltip":[
         {"field": "Species", "type":"nominal"},
         {"field": "EndUse", "type":"nominal", "title":"End Use"},
-        {"field": "Quantity", "aggregate":"sum", "type":"quantitative","format":","}
+        {"field": "Quantity", "aggregate":"sum", "type":"quantitative","format":",", "title":"Quantity"}
         ]
       }
     },
@@ -122,7 +122,7 @@
     "tooltip":[
         {"field": "Species", "type":"nominal"},
         {"field": "EndUse", "type":"nominal", "title":"End Use"},
-        {"field": "Quantity", "aggregate":"sum", "type":"quantitative","format":","}
+        {"field": "Quantity", "aggregate":"sum", "type":"quantitative","format":",", "title":"Quantity"}
         ]
       }
     }
