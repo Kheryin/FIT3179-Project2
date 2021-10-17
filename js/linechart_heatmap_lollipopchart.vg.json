@@ -18,7 +18,15 @@
 
 
 "vconcat":[
-  {"params": [{"name": "brush", "select": {"type": "interval","on": "mouseover", "nearest": true, "encodings": ["x"]}}],
+  {"params": [{"name": "brush", "select": {"type": "interval", "encodings": ["x"]}}, {
+              "name": "hover",
+              "select": {
+                "type": "point",
+                "encodings": ["x"],
+                "on": "mouseover",
+                "clear": "mouseout"
+              }
+            }],
   "width":800,
   "mark": "line",
   "encoding": {
