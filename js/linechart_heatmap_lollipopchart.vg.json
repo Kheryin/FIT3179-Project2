@@ -28,6 +28,7 @@
               }
             }],
   "width":800,
+  "title":"Livestock Exports from 2016 – 2020",
   "mark": {"type": "line", "size":2.5},
   "encoding": {
     "x": {"field": "Date", "timeUnit":"yearmonth", "type": "temporal", "title": "Date", "axis": {"tickCount":5, "grid": false}},
@@ -57,6 +58,7 @@
           }
         }
       ],
+      "title":"Livestock Exports to Destination Countries for Each Species",
   "mark": "rect",
   "encoding": {
     "x": {"field": "DestinationCountry", "type": "nominal", "axis":{"labelAngle": -50},"title":"Destination Country", 
@@ -79,13 +81,12 @@
   }
  
 ]},
-  {"facet": {"row": {"field": "EndUse","title":null}},
+  {"vconcat":[{"title":{"text":"Livestock Exports for Each Species by End Use", "anchor": "centre"}, "facet": {"row": {"field": "EndUse","title":null,"header":{"labelAngle": -1,"labelAlign": "middle"}}},
   "spec":{"transform": [ {
           "filter": {
             "param": "brush"
           }
         }],
-
 
 "layer": [
     {
@@ -126,7 +127,7 @@
       }
     }
   ]
-}}
+}}]}
   ]
 
 }
