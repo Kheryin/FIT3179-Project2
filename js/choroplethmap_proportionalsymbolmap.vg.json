@@ -1,7 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Yearly Total Livestock Exports",
-  "width": "container",
+  "width": 800,
+  "height":500,
   "projection": {"type": "equalEarth", "rotate":[-150,0,0]},
   
   "layer": [
@@ -45,7 +46,7 @@
           "op": "sum",
           "field": "Quantity",
           "as": "Quantity1"}],
-          "groupby": ["DestinationCountry", "Date"]}
+          "groupby": ["DestinationCountry"]}
 
       ],
        
@@ -57,7 +58,14 @@
           "type": "geojson"},
         "color": {
             "field": "Quantity1",
-            "type": "quantitative"}
+            "type": "quantitative",
+            "legend": {"orient": "right", "title": "Quantity"}, 
+            "scale": {"scheme": "yellowgreenblue"}}, 
+        "tooltip":[
+          {"field": "DestinationCountry", "type": "nominal", "title": "Destination Country"},
+          {"field":"Quantity1"}
+          
+        ]
       }
     }
   ]
