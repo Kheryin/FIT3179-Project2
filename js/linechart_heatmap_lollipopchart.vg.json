@@ -15,9 +15,9 @@
       "as": "emoji"
     }
   ],
-
-
-"vconcat":[
+"hconcat":
+[ 
+  {"vconcat":[
   {"params": [{"name": "brush", "select": {"type": "interval", "encodings": ["x"]}}, {
               "name": "hover",
               "select": {
@@ -80,6 +80,35 @@
 ],
 "config": {
     "axis": {"grid": true, "tickBand": "extent"}
-  }
+  }},
+  {"facet": {"row": {"field": "EndUse"}, "title": null},
+  "spec":{"transform": [ {
+          "filter": {
+            "param": "brush"
+          }
+        }],
+
+        
+"layer": [
+    {
+      "mark": "rule",
+      "encoding": {
+        "x": {"aggregate": "sum", "field": "Quantity", "type": "quantitative", "title": "Quantity", "axis":{"tickCount": 3}},
+        "y": {"field": "Species", "type": "nominal","scale": {"domain": ["Cattle", "Sheep", "Alpacas", "Buffalo", "Camels", "Deer", "Goats"]
+      }}
+      }
+    },
+    {
+      "mark": {"type": "text", "baseline": "middle"},
+      "encoding": {
+        "x": {"aggregate": "sum", "field": "Quantity", "type": "quantitative", "title": "Quantity"},
+        "y": {"field": "Species", "type": "nominal"},
+        "text": {"field": "emoji", "type": "nominal"},
+    "size": {"value": 15}
+      }
+    }
+  ]
+}}
+  ]
 
 }
