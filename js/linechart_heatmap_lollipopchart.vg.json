@@ -39,7 +39,7 @@
       "Others"
       ],
       "range": ["#675193", "#ca8861", "#95A5A6"]
-      }},
+      },"legend":{"title":"Species"}},
 
     "tooltip":[
       {"field": "Species1", "type": "nominal", "title": "Species"},
@@ -61,10 +61,11 @@
   "encoding": {
     "x": {"field": "DestinationCountry", "type": "nominal", "axis":{"labelAngle": -50},"title":"Destination Country", 
     "scale": {"domain": ["Argentina", "Bangladesh", "Brunei Darussalam", "Cambodia", "Canada", "Chile", "China", "Fiji", "Hong Kong", "India", "Indonesia", "Israel", "Japan", "Jordan", "Kazakhstan", "Kuwait", "Lebanon", "Malaysia", "Mexico", "Nepal", "New Zealand", "Oman", "Pakistan", "Philippines", "Qatar", "Russia", "Singapore", "South Korea", "Sri Lanka", "Taiwan", "Thailand", "Turkey", "United Arab Emirates", "United Kingdom", "Uruguay", "Uzbekistan", "Vietnam"]
-      }},
+      }, "axis": {"grid": true, "tickBand": "extent"}},
+
     "y": {"field": "Species", "type": "nominal", 
-    "scale": {"domain": ["Cattle", "Sheep", "Alpacas", "Buffalo", "Camels", "Deer", "Goats"]
-      }},
+    "scale": {"domain": ["Alpacas", "Buffalo", "Camels", "Deer", "Goats","Cattle", "Sheep"]
+      },"axis": {"grid": true, "tickBand": "extent"}},
 
     "color": {"aggregate":"sum", "field": "Quantity","type": "quantitative", "legend": {"orient": "right", "title": "Quantity"}, "scale": {"scheme": "yellowgreenblue"}},
     
@@ -77,25 +78,37 @@
   }
   }
  
-],
-"config": {
-    "axis": {"grid": true, "tickBand": "extent"}
-  }},
-  {"facet": {"row": {"field": "EndUse"}, "title": null},
+]},
+  {"facet": {"row": {"field": "EndUse","title":null}},
   "spec":{"transform": [ {
           "filter": {
             "param": "brush"
           }
         }],
 
-        
+
 "layer": [
     {
       "mark": "rule",
       "encoding": {
         "x": {"aggregate": "sum", "field": "Quantity", "type": "quantitative", "title": "Quantity", "axis":{"tickCount": 3}},
         "y": {"field": "Species", "type": "nominal","scale": {"domain": ["Cattle", "Sheep", "Alpacas", "Buffalo", "Camels", "Deer", "Goats"]
-      }}
+      }},
+      
+      "color": {"field": "Species1","type": "nominal","scale": {
+      "domain": [
+      "Cattle",
+      "Sheep",
+      "Others"
+      ],
+      "range": ["#675193", "#ca8861", "#95A5A6"]
+      },"legend":null},
+
+      "tooltip":[
+        {"field": "Species", "type":"nominal"},
+        {"field": "EndUse", "type":"nominal", "title":"End Use"},
+        {"field": "Quantity", "aggregate":"sum", "type":"quantitative","format":","}
+        ]
       }
     },
     {
@@ -104,7 +117,12 @@
         "x": {"aggregate": "sum", "field": "Quantity", "type": "quantitative", "title": "Quantity"},
         "y": {"field": "Species", "type": "nominal"},
         "text": {"field": "emoji", "type": "nominal"},
-    "size": {"value": 15}
+    "size": {"value": 15},
+    "tooltip":[
+        {"field": "Species", "type":"nominal"},
+        {"field": "EndUse", "type":"nominal", "title":"End Use"},
+        {"field": "Quantity", "aggregate":"sum", "type":"quantitative","format":","}
+        ]
       }
     }
   ]
