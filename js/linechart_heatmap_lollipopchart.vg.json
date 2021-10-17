@@ -1,0 +1,76 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "https://raw.githubusercontent.com/Kheryin/FIT3179-Project2/main/data/AustraliaLivestockExportsData.csv"},
+  "transform": [
+    {
+ "calculate": "timeParse(datum['Date'], '%d/%m/%Y')",
+ "as": "Date"
+ }, 
+ {
+   "calculate": "{'Alpacas':'Others','Buffalo':'Others','Camels': 'Others','Cattle': 'Cattle', 'Deer': 'Others', 'Goats': 'Others','Sheep': 'Sheep'}[datum.Species]",
+      "as": "Species1"
+ },
+ {
+      "calculate": "{'Alpacas':'🦙','Buffalo':'🐃','Camels': '🐫','Cattle': '🐄', 'Deer': '🦌', 'Goats': '🐐','Sheep': '🐏'}[datum.Species]",
+      "as": "emoji"
+    }
+  ],
+
+
+"vconcat":[
+  {"params": [{"name": "brush", "select": {"type": "interval","encodings": ["x"]}}],
+  "width":800,
+  "mark": "line",
+  "encoding": {
+    "x": {"field": "Date", "timeUnit":"yearmonth", "type": "temporal", "title": "Date", "axis": {"tickCount":5, "grid": false}},
+    "y": {"aggregate":"sum", "field": "Quantity", "type": "quantitative", "title": "Quantity"},
+    "color": {"field": "Species1","type": "nominal","scale": {
+      "domain": [
+      "Cattle",
+      "Sheep",
+      "Others"
+      ],
+      "range": ["#675193", "#ca8861", "#95A5A6"]
+      }},
+
+    "tooltip":[
+     {"field": "Date", "timeUnit":"year", "type": "ordinal", "title": "Year"},
+     {"field": "Date", "timeUnit":"month", "type": "ordinal", "title": "Month"},
+     {"aggregate":"sum", "field": "Quantity", "type":"quantitative", "format": ",", "title":"Total Quantity"}
+    ]
+  }
+  },
+  
+  {"transform": [
+        {
+          "filter": {
+            "param": "brush"
+          }
+        }
+      ],
+  "mark": "rect",
+  "encoding": {
+    "x": {"field": "DestinationCountry", "type": "nominal", "axis":{"labelAngle": -50},"title":"Destination Country", 
+    "scale": {"domain": ["Argentina", "Bangladesh", "Brunei Darussalam", "Cambodia", "Canada", "Chile", "China", "Fiji", "Hong Kong", "India", "Indonesia", "Israel", "Japan", "Jordan", "Kazakhstan", "Kuwait", "Lebanon", "Malaysia", "Mexico", "Nepal", "New Zealand", "Oman", "Pakistan", "Philippines", "Qatar", "Russia", "Singapore", "South Korea", "Sri Lanka", "Taiwan", "Thailand", "Turkey", "United Arab Emirates", "United Kingdom", "Uruguay", "Uzbekistan", "Vietnam"]
+      }},
+    "y": {"field": "Species", "type": "nominal", 
+    "scale": {"domain": ["Alpacas", "Buffalo", "Camels", "Cattle", "Deer", "Goats", "Sheep"]
+      }},
+
+    "color": {"aggregate":"sum", "field": "Quantity","type": "quantitative", "legend": {"orient": "right", "title": "Quantity"}, "scale": {"scheme": "yellowgreenblue"}},
+    
+    
+    "tooltip":[
+     {"field": "Species", "type":"nominal"},
+     {"field": "DestinationCountry", "type":"nominal", "title":"Destination Country"},
+     {"aggregate":"sum", "field": "Quantity", "type":"quantitative", "format": ",", "title":"Quantity"}
+    ]
+  }
+  }
+ 
+],
+"config": {
+    "axis": {"grid": true, "tickBand": "extent"}
+  }
+
+}
