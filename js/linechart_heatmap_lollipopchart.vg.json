@@ -92,7 +92,7 @@
     {
       "mark": "rule",
       "encoding": {
-        "x": {"aggregate": "sum", "field": "Quantity", "type": "quantitative", "title": "Quantity", "axis":{"tickCount": 3}},
+        "x": {"aggregate": "sum", "field": "Quantity", "type": "quantitative", "title": "Quantity", "axis":{"tickCount":3}},
         "y": {"field": "Species", "type": "nominal","scale": {"domain": ["Cattle", "Sheep", "Alpacas", "Buffalo", "Camels", "Deer", "Goats"]
       }},
       
