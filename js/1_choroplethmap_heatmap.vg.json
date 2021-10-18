@@ -1,5 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  
   "data": {"url": "https://raw.githubusercontent.com/Kheryin/FIT3179-Project2/main/data/AustraliaLivestockExportsData.csv"},
   "transform": [
     {
@@ -9,9 +10,9 @@
   ],
 "vconcat":[
 
-  {"title": "Total Livestock Exports (Filter Dates Using Heat Map Below)",
-  "width": 700,
-  "height":300,
+  {"title": {"text": "Total Livestock Exports by Countries (Filter Dates Using Heat Map Below)","fontSize":16},
+  "width": 800,
+  "height":400,
   "projection": {"type": "equalEarth", "rotate":[-150,0,0]},
   
   "layer": [
@@ -80,7 +81,7 @@
             "scale": {"scheme": "yellowgreenblue"}}, 
         "tooltip":[
           {"field": "DestinationCountry", "type": "nominal", "title": "Destination Country"},
-          {"field":"Quantity1", "type": "quantitative", "title":"Quantity"}
+          {"field":"Quantity1", "type": "quantitative", "title":"Quantity", "format":","}
           
         ]
       }
@@ -90,10 +91,10 @@
   
   },
 
-  {"title": "Total Livestock Exports (Monthly)",
-  "width": 700,
-  "height":150,
-  "params": [{"name": "highlight", "select": {"type": "point","encodings": ["x", "y"]}}],
+  {"title": {"text":["","","Monthly Total Livestock Exports"], "fontSize":16},
+  "width": 800,
+  "height":200,
+  "params": [{"name": "highlight", "select": {"type": "interval", "encodings": ["x", "y"]}}],
 
   "mark": "rect",
   "encoding": {
