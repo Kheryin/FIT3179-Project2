@@ -28,8 +28,9 @@
                 "clear": "mouseout"
               }
             }],
-  "width":700,
-  "title":"Livestock Exports from 2016 – 2020",
+  "width":800,
+  "height": 280,
+  "title":{"text":"Livestock Exports for each Species from 2016 – 2020", "fontSize":16},
   "mark": {"type": "line", "size":2.5},
   "encoding": {
     "x": {"field": "Date", "timeUnit":"yearmonth", "type": "temporal", "title": "Date", "axis": {"tickCount":5, "grid": false}},
@@ -41,7 +42,7 @@
       "Others"
       ],
       "range": ["#675193", "#ca8861", "#95A5A6"]
-      },"legend":{"title":"Species"}},
+      },"legend":{"title":"Species","padding":5, "orient": "right"}},
 
     "tooltip":[
       {"field": "Species1", "type": "nominal", "title": "Species"},
@@ -59,8 +60,9 @@
           }
         }
       ],
-"title":"Livestock Exports to Destination Countries for Each Species",
-"width":700,
+"title":{"text":["","","","", "Livestock Exports to Destination Countries for Each Species"],"fontSize":16},
+"width":800,
+"height":180,
   "mark": "rect",
   "encoding": {
     "x": {"field": "DestinationCountry", "type": "nominal", "axis":{"labelAngle": -50,"grid": true, "tickBand": "extent"},"title":"Destination Country", 
@@ -71,7 +73,7 @@
     "scale": {"domain": ["Alpacas", "Buffalo", "Camels", "Deer", "Goats","Cattle", "Sheep"]
       },"axis": {"grid": true, "tickBand": "extent"}},
 
-    "color": {"aggregate":"sum", "field": "Quantity","type": "quantitative", "legend": {"orient": "right", "title": "Quantity"}, "scale": {"scheme": "yellowgreenblue"}},
+    "color": {"aggregate":"sum", "field": "Quantity","type": "quantitative", "legend": {"orient": "right", "title": "Quantity", "padding":5}, "scale": {"scheme": "yellowgreenblue"}},
     
     
     "tooltip":[
@@ -83,19 +85,20 @@
   }
  
 ]},
-  {"vconcat":[{"title":{"text":"Livestock Exports for Each Species by End Use", "anchor": "centre"}, "facet": {"row": {"field": "EndUse","title":null,"header":{"labelAngle": -1,"labelAlign": "middle"}}},
+  {"vconcat":[{"title":{"text":"Livestock Exports for Each Species by End Use", "anchor": "centre", "fontSize":14.5}, "facet": {"row": {"field": "EndUse","title":null,"header":{"labelAngle": -1,"labelAlign": "middle"}}},
   "spec":{"transform": [ {
           "filter": {
             "param": "brush"
           }
         }],
-"width":300,
+"width":280,
+"height":150,
 "layer": [
     {
       "mark": "rule",
       "encoding": {
         "x": {"aggregate": "sum", "field": "Quantity", "type": "quantitative", "title": "Quantity", "axis":{"tickCount":3}},
-        "y": {"field": "Species", "type": "nominal","scale": {"domain": ["Cattle", "Sheep", "Alpacas", "Buffalo", "Camels", "Deer", "Goats"]
+        "y": {"field": "Species", "type": "nominal","scale": {"domain": ["Alpacas", "Buffalo", "Camels", "Deer", "Goats","Cattle", "Sheep"]
       }},
       
       "color": {"field": "Species1","type": "nominal","scale": {
