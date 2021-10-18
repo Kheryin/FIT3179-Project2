@@ -1,0 +1,135 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "https://raw.githubusercontent.com/Kheryin/FIT3179-Project2/main/data/AustraliaLivestockExportsData.csv"},
+  "transform": [
+    {
+ "calculate": "timeParse(datum['Date'], '%d/%m/%Y')",
+ "as": "Date"
+ }, 
+ {
+   "calculate": "{'Alpacas':'Others','Buffalo':'Others','Camels': 'Others','Cattle': 'Cattle', 'Deer': 'Others', 'Goats': 'Others','Sheep': 'Sheep'}[datum.Species]",
+      "as": "Species1"
+ },
+ {
+      "calculate": "{'Alpacas':'🦙','Buffalo':'🐃','Camels': '🐫','Cattle': '🐄', 'Deer': '🦌', 'Goats': '🐐','Sheep': '🐏'}[datum.Species]",
+      "as": "emoji"
+    }
+  ],
+"hconcat":
+[ 
+  {"vconcat":[
+  {
+  "params": [{"name": "brush", "select": {"type": "interval", "encodings": ["x"]}}, {
+              "name": "hover",
+              "select": {
+                "type": "point",
+                "encodings": ["x"],
+                "on": "mouseover",
+                "clear": "mouseout"
+              }
+            }],
+  "width":700,
+  "title":"Livestock Exports from 2016 – 2020",
+  "mark": {"type": "line", "size":2.5},
+  "encoding": {
+    "x": {"field": "Date", "timeUnit":"yearmonth", "type": "temporal", "title": "Date", "axis": {"tickCount":5, "grid": false}},
+    "y": {"aggregate":"sum", "field": "Quantity", "type": "quantitative", "title": "Quantity"},
+    "color": {"field": "Species1","type": "nominal","scale": {
+      "domain": [
+      "Cattle",
+      "Sheep",
+      "Others"
+      ],
+      "range": ["#675193", "#ca8861", "#95A5A6"]
+      },"legend":{"title":"Species"}},
+
+    "tooltip":[
+      {"field": "Species1", "type": "nominal", "title": "Species"},
+     {"field": "Date", "timeUnit":"year", "type": "ordinal", "title": "Year"},
+     {"field": "Date", "timeUnit":"month", "type": "ordinal", "title": "Month"},
+     {"aggregate":"sum", "field": "Quantity", "type":"quantitative", "format": ",", "title":"Quantity"}
+    ]
+  }
+  },
+  
+  {"transform": [
+        {
+          "filter": {
+            "param": "brush"
+          }
+        }
+      ],
+"title":"Livestock Exports to Destination Countries for Each Species",
+"width":700,
+  "mark": "rect",
+  "encoding": {
+    "x": {"field": "DestinationCountry", "type": "nominal", "axis":{"labelAngle": -50,"grid": true, "tickBand": "extent"},"title":"Destination Country", 
+    "scale": {"domain": ["Argentina", "Bangladesh", "Brunei Darussalam", "Cambodia", "Canada", "Chile", "China", "Fiji", "Hong Kong", "India", "Indonesia", "Israel", "Japan", "Jordan", "Kazakhstan", "Kuwait", "Lebanon", "Malaysia", "Mexico", "Nepal", "New Zealand", "Oman", "Pakistan", "Philippines", "Qatar", "Russia", "Singapore", "South Korea", "Sri Lanka", "Taiwan", "Thailand", "Turkey", "United Arab Emirates", "United Kingdom", "Uruguay", "Uzbekistan", "Vietnam"]
+      }},
+
+    "y": {"field": "Species", "type": "nominal", 
+    "scale": {"domain": ["Alpacas", "Buffalo", "Camels", "Deer", "Goats","Cattle", "Sheep"]
+      },"axis": {"grid": true, "tickBand": "extent"}},
+
+    "color": {"aggregate":"sum", "field": "Quantity","type": "quantitative", "legend": {"orient": "right", "title": "Quantity"}, "scale": {"scheme": "yellowgreenblue"}},
+    
+    
+    "tooltip":[
+     {"field": "Species", "type":"nominal"},
+     {"field": "DestinationCountry", "type":"nominal", "title":"Destination Country"},
+     {"aggregate":"sum", "field": "Quantity", "type":"quantitative", "format": ",", "title":"Quantity"}
+    ]
+  }
+  }
+ 
+]},
+  {"vconcat":[{"title":{"text":"Livestock Exports for Each Species by End Use", "anchor": "centre"}, "facet": {"row": {"field": "EndUse","title":null,"header":{"labelAngle": -1,"labelAlign": "middle"}}},
+  "spec":{"transform": [ {
+          "filter": {
+            "param": "brush"
+          }
+        }],
+"width":300,
+"layer": [
+    {
+      "mark": "rule",
+      "encoding": {
+        "x": {"aggregate": "sum", "field": "Quantity", "type": "quantitative", "title": "Quantity", "axis":{"tickCount":3}},
+        "y": {"field": "Species", "type": "nominal","scale": {"domain": ["Cattle", "Sheep", "Alpacas", "Buffalo", "Camels", "Deer", "Goats"]
+      }},
+      
+      "color": {"field": "Species1","type": "nominal","scale": {
+      "domain": [
+      "Cattle",
+      "Sheep",
+      "Others"
+      ],
+      "range": ["#675193", "#ca8861", "#95A5A6"]
+      },"legend":null},
+
+      "tooltip":[
+        {"field": "Species", "type":"nominal"},
+        {"field": "EndUse", "type":"nominal", "title":"End Use"},
+        {"field": "Quantity", "aggregate":"sum", "type":"quantitative","format":",", "title":"Quantity"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "baseline": "middle"},
+      "encoding": {
+        "x": {"aggregate": "sum", "field": "Quantity", "type": "quantitative", "title": "Quantity"},
+        "y": {"field": "Species", "type": "nominal"},
+        "text": {"field": "emoji", "type": "nominal"},
+    "size": {"value": 15},
+    "tooltip":[
+        {"field": "Species", "type":"nominal"},
+        {"field": "EndUse", "type":"nominal", "title":"End Use"},
+        {"field": "Quantity", "aggregate":"sum", "type":"quantitative","format":",", "title":"Quantity"}
+        ]
+      }
+    }
+  ]
+}}]}
+  ]
+
+}
