@@ -80,7 +80,7 @@
             "scale": {"scheme": "yellowgreenblue"}}, 
         "tooltip":[
           {"field": "DestinationCountry", "type": "nominal", "title": "Destination Country"},
-          {"field":"Quantity1"}
+          {"field":"Quantity1", "type": "quantitative", "title":"Quantity"}
           
         ]
       }
@@ -90,7 +90,7 @@
   
   },
 
-  {"title": "Total Livestock Exports",
+  {"title": "Total Livestock Exports (Monthly)",
   "width": 700,
   "height":150,
   "params": [{"name": "highlight", "select": {"type": "point","encodings": ["x", "y"]}}],
