@@ -1,0 +1,98 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Cattle and Sheep Exports per Quarter from 2016 – 2020",
+  "width":"container",
+  "data": { "url": "https://raw.githubusercontent.com/Kheryin/FIT3179-Project2/main/data/AustraliaLivestockExportsData.csv"},
+  
+  "transform": [
+    {"filter": {"field": "Species", "oneOf": ["Cattle", "Sheep"]}},
+    {
+ "calculate": "timeParse(datum['Date'], '%d/%m/%Y')",
+ "as": "Date"
+ },
+    {"calculate": "datum.Species == 'Cattle' ? -datum.Quantity : datum.Quantity", "as": "Quantity1"},
+
+    {"calculate": "{'Jan':'Q1', 'Feb':'Q1', 'Mar':'Q1', 'Apr':'Q2', 'May':'Q2', 'Jun': 'Q2','Jul':'Q3', 'Aug':'Q3','Sep':'Q3', 'Oct': 'Q4', 'Nov':'Q4', 'Dec':'Q4'}[datum.Month]",
+      "as": "Quarter"}
+  ],
+
+  "layer":[{
+  "mark": "bar",
+  "encoding": {
+    "y": {
+      "field": "Date","timeUnit":"yearquarter", "sort": "descending", "title": "Date", "axis": {"labelExpr": "datum.label[3]==1 ? '' : datum.label"}
+    },
+    "x": {
+      "aggregate": "sum", "field": "Quantity1",
+      "title": "Quantity",
+      "axis": {"labelExpr": "datum.label[0]>=0 ? datum.label : datum.label[1]+'00,000'", "tickCount": 6}
+    },
+    "color": {
+      "field": "Species",
+      "scale": {"range": ["#675193", "#ca8861"]},
+      "legend": {"orient": "right", "title": "Species"}
+    },
+  "tooltip": [
+{"field": "Species", "type": "nominal"},
+{"field": "Date", "timeUnit":"year", "title":"Year"},
+{"field": "Date", "timeUnit":"quarter", "title":"Quarter"},
+{"aggregate":"sum", "field": "Quantity", "type": "quantitative", "format": ",", "title":"Quantity"}
+]
+  }},
+  
+  {
+  "transform": [
+    {"filter": "datum.Species == 'Sheep'"},
+    {"aggregate": [{
+       "op": "sum",
+       "field": "Quantity1",
+       "as": "Quantity2"
+      }],
+      "groupby": ["Quarter", "Year"]}],
+
+  "mark": "rule",
+      "encoding": {
+        "x": {
+          "aggregate": "mean",
+          "field": "Quantity2",
+          "type": "quantitative"
+        },
+        "color": {"value": "black"},
+        "size": {"value": 1},
+        "opacity":{"value": 0.5},
+        "tooltip":[
+        {"field":"Quantity2", "aggregate":"mean", "title":"Quarterly Average (Sheep)", "format":",.0f"}]
+      }
+  },
+  
+  {
+  "transform": [
+    {"filter": "datum.Species == 'Cattle'"},
+    {"aggregate": [{
+       "op": "sum",
+       "field": "Quantity1",
+       "as": "Quantity2"
+      }],
+      "groupby": ["Quarter", "Year"]}],
+
+  "mark": "rule",
+      "encoding": {
+        "x": {
+          "aggregate": "mean",
+          "field": "Quantity2",
+          "type": "quantitative"
+        },
+        "color": {"value": "black"},
+        "size": {"value": 1},
+        "opacity":{"value": 0.5} ,
+        "tooltip":[
+        {"field":"Quantity2", "aggregate":"mean", "title":"Quarterly Average (Cattle)", "format":",.0f"}]
+      }
+  }
+  
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"grid": false}
+  }
+}
