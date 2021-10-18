@@ -47,14 +47,14 @@ h3 {
 p {
     padding-left: 3px;
 	padding-right: 15px;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 28px;
 }
 
 p1 {
     padding-left: 10px;
 	padding-right: 15px;
-    font-size: 15px;
+    font-size: 13px;
     line-height: 18px;
 }
 
@@ -87,11 +87,11 @@ h1 {
 
 .cattle_text{
     color: #675193;
-    font-size: 21px;
+    font-size: 19px;
 }
 .sheep_text{
     color:#ca8861;
-    font-size: 21px;
+    font-size: 19px;
 }
 
 .others_text{
@@ -100,15 +100,15 @@ h1 {
 
 .high_values{
     color:#081d58;
-    font-size: 21px;
+    font-size: 19px;
 }
 
 .low_values{
     color:#9ecae1;
-    font-size: 21px;
+    font-size: 19px;
 }
 
 .emoji_large{
-    font-size:35px ;
+    font-size:33px ;
 }
 
