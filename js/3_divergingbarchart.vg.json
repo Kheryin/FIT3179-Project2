@@ -40,54 +40,56 @@
 ]
   }},
   
-  {
-  "transform": [
-    {"filter": "datum.Species == 'Sheep'"},
-    {"aggregate": [{
-       "op": "sum",
-       "field": "Quantity1",
-       "as": "Quantity2"
-      }],
-      "groupby": ["Quarter", "Year"]}],
-
-  "mark": "rule",
-      "encoding": {
-        "x": {
-          "aggregate": "mean",
-          "field": "Quantity2",
-          "type": "quantitative"
-        },
-        "color": {"value": "black"},
-        "size": {"value": 1},
-        "opacity":{"value": 0.5},
-        "tooltip":[
-        {"field":"Quantity2", "aggregate":"mean", "title":"Quarterly Average (Sheep)", "format":",.0f"}]
-      }
-  },
+  {  
+  "encoding": {
+        "x": {"datum": 341566}},
   
-  {
-  "transform": [
-    {"filter": "datum.Species == 'Cattle'"},
-    {"aggregate": [{
-       "op": "sum",
-       "field": "Quantity1",
-       "as": "Quantity2"
-      }],
-      "groupby": ["Quarter", "Year"]}],
-
-  "mark": "rule",
-      "encoding": {
-        "x": {
-          "aggregate": "mean",
-          "field": "Quantity2",
-          "type": "quantitative"
+  "layer":[{"mark": 
+        {"type": "rule",
+        "color": "black",
+        "size": 1,
+        "opacity": 0.01}
         },
-        "color": {"value": "black"},
-        "size": {"value": 1},
-        "opacity":{"value": 0.5} ,
-        "tooltip":[
-        {"field":"Quantity2", "aggregate":"mean", "title":"Quarterly Average (Cattle)", "format":",.0f"}]
-      }
+
+        {
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "baseline": "bottom",
+          "dx": 0,
+          "dy": -215,
+          "y": "height",
+          "text": ["Average (Sheep):", "341,566"],
+          "fontSize":9
+        }
+        } 
+    ]  
+  },
+
+  {  
+  "encoding": {
+        "x": {"datum": -274428}},
+  
+  "layer":[{"mark": 
+        {"type": "rule",
+        "color": "black",
+        "size": 1,
+        "opacity": 0.01}
+        },
+
+        {
+        "mark": {
+          "type": "text",
+          "align": "center",
+          "baseline": "bottom",
+          "dx": 0,
+          "dy": -215,
+          "y": "height",
+          "text": ["Average (Cattle):", "274,428"],
+          "fontSize":9
+        }
+        } 
+    ]  
   }
   
   ],
