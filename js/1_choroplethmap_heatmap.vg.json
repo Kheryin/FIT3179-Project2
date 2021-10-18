@@ -8,44 +8,10 @@
  }
   ],
 "vconcat":[
-  {"title": "Monthly Total Livestock Exports",
-  "width": 600,
-  "height":100,
-    "params": [{"name": "highlight", "select": {"type": "interval","encodings": ["x", "y"]}}],
 
-  "mark": "rect",
-  "encoding": {
-    "x": {"field": "Date", "timeUnit":"month", "type": "ordinal", "title": "Month"},
-    "y": {"field": "Date", "timeUnit":"year", "type": "ordinal", "title": "Year"},
-    "color": {"aggregate":"sum", "field": "Quantity","type": "quantitative", "scale":{"scheme":"blues"}},
-    "stroke": {
-      "condition": {
-        "param": "highlight",
-        "empty": false,
-        "value": "black"
-      },
-      "value": null
-    },
-    "opacity": {
-      "condition": {"param": "highlight", "value": 1},
-      "value": 0.4
-    },
-
-    "tooltip":[
-     {"field": "Date", "timeUnit":"year", "type": "ordinal", "title": "Year"},
-     {"field": "Date", "timeUnit":"month", "type": "ordinal", "title": "Month"},
-     {"aggregate":"sum", "field": "Quantity", "type":"quantitative", "format": ",", "title":"Total Quantity"}
-    ]
-  }
-  },
-  
-
-
-
-
-  {"title": "Total Livestock Exports (Filter Dates Using Heat Map Above)",
-  "width": 600,
-  "height":400,
+  {"title": "Total Livestock Exports (Filter Dates Using Heat Map Below)",
+  "width": 700,
+  "height":300,
   "projection": {"type": "equalEarth", "rotate":[-150,0,0]},
   
   "layer": [
@@ -110,7 +76,7 @@
         "color": {
             "field": "Quantity1",
             "type": "quantitative",
-            "legend": {"orient": "right", "title": "Quantity"}, 
+            "legend": {"orient": "right", "title": "Quantity", "padding":5}, 
             "scale": {"scheme": "yellowgreenblue"}}, 
         "tooltip":[
           {"field": "DestinationCountry", "type": "nominal", "title": "Destination Country"},
@@ -122,7 +88,40 @@
   ]
   
   
+  },
+
+  {"title": "Total Livestock Exports",
+  "width": 700,
+  "height":150,
+  "params": [{"name": "highlight", "select": {"type": "point","encodings": ["x", "y"]}}],
+
+  "mark": "rect",
+  "encoding": {
+    "x": {"field": "Date", "timeUnit":"month", "type": "ordinal", "title": "Month"},
+    "y": {"field": "Date", "timeUnit":"year", "type": "ordinal", "title": "Year"},
+    "color": {"aggregate":"sum", "field": "Quantity","type": "quantitative", "scale":{"scheme":"blues"}, "legend":{"title":"Quantity", "padding":5, "orient": "right"}},
+    "stroke": {
+      "condition": {
+        "param": "highlight",
+        "empty": false,
+        "value": "black"
+      },
+      "value": null
+    },
+    "opacity": {
+      "condition": {"param": "highlight", "value": 1},
+      "value": 0.4
+    },
+
+    "tooltip":[
+     {"field": "Date", "timeUnit":"year", "type": "ordinal", "title": "Year"},
+     {"field": "Date", "timeUnit":"month", "type": "ordinal", "title": "Month"},
+     {"aggregate":"sum", "field": "Quantity", "type":"quantitative", "format": ",", "title":"Total Quantity"}
+    ]
   }
+
+}
+  
  
 ],"resolve": {"scale": {"color": "independent"}},
 "config": {
