@@ -1,7 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Cattle and Sheep Exports per Quarter from 2016 – 2020",
-  "width":"container",
+  "width":700,
+  "height":300,
   "data": { "url": "https://raw.githubusercontent.com/Kheryin/FIT3179-Project2/main/data/AustraliaLivestockExportsData.csv"},
   
   "transform": [
@@ -10,10 +11,7 @@
  "calculate": "timeParse(datum['Date'], '%d/%m/%Y')",
  "as": "Date"
  },
-    {"calculate": "datum.Species == 'Cattle' ? -datum.Quantity : datum.Quantity", "as": "Quantity1"},
-
-    {"calculate": "{'Jan':'Q1', 'Feb':'Q1', 'Mar':'Q1', 'Apr':'Q2', 'May':'Q2', 'Jun': 'Q2','Jul':'Q3', 'Aug':'Q3','Sep':'Q3', 'Oct': 'Q4', 'Nov':'Q4', 'Dec':'Q4'}[datum.Month]",
-      "as": "Quarter"}
+    {"calculate": "datum.Species == 'Cattle' ? -datum.Quantity : datum.Quantity", "as": "Quantity1"}
   ],
 
   "layer":[{
@@ -25,7 +23,8 @@
     "x": {
       "aggregate": "sum", "field": "Quantity1",
       "title": "Quantity",
-      "axis": {"labelExpr": "datum.label[0]>=0 ? datum.label : datum.label[1]+'00,000'", "tickCount": 6}
+      "scale":{"domainMax":610000},
+      "axis": {"labelExpr": "datum.label[0]>=0 ? datum.label : datum.label[1]+'00,000'", "tickCount": 6, "grid": true}
     },
     "color": {
       "field": "Species",
@@ -57,9 +56,9 @@
           "align": "center",
           "baseline": "bottom",
           "dx": 0,
-          "dy": -215,
+          "dy": -325,
           "y": "height",
-          "text": ["Average (Sheep):", "341,566"],
+          "text": ["","Average (Sheep):", "341,566"],
           "fontSize":9
         }
         } 
@@ -83,9 +82,9 @@
           "align": "center",
           "baseline": "bottom",
           "dx": 0,
-          "dy": -215,
+          "dy": -325,
           "y": "height",
-          "text": ["Average (Cattle):", "274,428"],
+          "text": ["","Average (Cattle):", "274,428"],
           "fontSize":9
         }
         } 
