@@ -2,21 +2,28 @@
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-h1 {
-    font-weight: 900;
-}
-
 body {
     background-color: white;
 }
 
 .page {
     width: 1000px;
-    background-color: #d9d9d9;
+    background-color: #f0f0f0;
     margin: auto;
     padding: 50px;
     padding-top: 35px;
 }
+
+h1 {
+	background-color: #08519c;
+	color: white;
+    font-size: 900;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	padding-left: 30px;
+	padding-right: 30px;
+  }
+
 
 .vis-container {
     width: 100%;
