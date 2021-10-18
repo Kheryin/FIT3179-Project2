@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Australia Livestock Exports – Kher Yin H'ng</title>
+  <title>Australian Livestock Exports – Kher Yin H'ng</title>
   <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
@@ -24,22 +24,127 @@
 
  <div class="page">
    
-   <h1 align="center">Australia Livestock Exports</h1>
-   
-   <h1 align="center">Australia Livestock Exports</h1>
-   
-   <h1 align="center">Australia Livestock Exports</h1>
-   
-   <h1 align="center">Australia Livestock Exports</h1>
+   <h1 align="center">Australian Livestock Exports</h1>
+   <p align="center">Australia's Livestock Export Trade is a valuable Australian industry as it is a major source of 
+     employment for many people in <br> rural and regional Australia. It is one of the country's largest
+     value-adding and key economic industry which develops <br> national economic growth.
+     <br><br>
+     This visualisation aims to explore the patterns in the <b>
+     Australian Livestock Exports</b> including its
+      main destination countries <br>and species exported from <b>years 2016 to 2020</b>.
 
+     </p>
    
-    
-  
-    <div class="pure-g">
-      <div class="pure-u-1-1 small-font">
-        <p>This visualisation is created by <a href="https://github.com/Kheryin" target="_blank">Kher Yin H'ng</a>. The datasource is <a href="#"" target="_blank">some data repository online</href>.</p>
+  <br>
+
+   <h2 align="left">Overview Of Livestock Exports</h2>
+
+  <div class="pure-g">
+    <div class="pure-u-3-4">
+      <div id="vis1" class="vis-container"></div>
+    </div>
+    <div class="pure-u-1-4">
+      <div class="description description-right">
+        <p> The Australian livestock export sector is one of the largest worldwide in terms of 
+          annual volumes of livestock exported. 
+          <br><br>
+
+          During the <b>years 2016 to 2020</b>, most of Australia's livestock are exported to the 
+          <b><span class='high_values'>South East Asia region</span></b>, and <b>mainly</b> to <b><span class='high_values'>Indonesia</span></b>. 
+          <br><br>
+
+          From 2016 to 2020, the <b>quantity of livestock exports </b> seems to be <b><span class='low_values'>decreasing</span></b> generally.
+          Particularly, the quantity of livestock exports seems to be the <b><span class='low_values'>lowest</span></b> during the months <b>July 
+          to October</b> for years <b>2018, 2019 and 2020</b>.
+        </p>
       </div>
     </div>
+</div>
+
+<p1>Note: To filter for dates to be reflected in the choropleth map, brush across the heat map to select the dates.</p1>
+  
+  <br><br><br>
+
+
+
+   
+   <h2 align="left">Livestock Exports Across Time</h2>
+
+   <div id="vis2" class="vis-container"></div>
+  
+
+   <p1>Note: To filter for date intervals to be reflected in the heat map and lollipop chart, brush across the line chart to select the date intervals.</p1>
+   
+   <br><br>
+
+
+   <div class="pure-g">
+    <div class="pure-u-3-4">
+      <div class="description description-left">
+      <p>From 2016 to 2020, the <b><span class='cattle_text'>Cattle</span></b> and <b><span class='sheep_text'>Sheep</span></b>
+        species <b>dominates</b> the Australian livestock exports.
+        The exported quantities of the <b><span class='others_text'>Others species</span></b> category in the line chart, 
+        which is the sum of <b><span class='others_text'>Alpacas, Buffalo, Camels, 
+          Deer and Goats</span></b> species exported, is even <b><span class='others_text'>collectively lesser</span></b> than that of the Cattle and Sheep species individually.
+        
+        <br><br>
+
+        There seems to be a <b><span class='cattle_text'>steady trend</span></b> in the quantity of 
+        <b><span class='cattle_text'>Cattles</span></b> exported across time, whilist the number of
+        <b><span class='sheep_text'>Sheeps</span></b> exported is noticably <b><span class='sheep_text'>lesser</span></b> 
+        during the <b>July to October</b> period for years <b>2018 to 2020</b>. 
+    
+        The <b><span class='cattle_text'>Cattle</span></b> species is mainly exported to 
+        <b><span class='cattle_text'>Indonesia</span></b> and <b><span class='cattle_text'>China</span></b> whilist the 
+        <b><span class='sheep_text'>Sheep</span></b> species
+        is mainly exported to <b><span class='sheep_text'>Kuwait, Qatar</span></b> and <b><span class='sheep_text'>Jordan</span></b>. 
+         <b><span class='others_text'>Other species</span></b> are only exported to a <b><span class='others_text'>few countries</span></b>
+        in <b><span class='others_text'>small quantities</span></b>.</p>
+      </div>
+    </div>
+
+    <div class="pure-u-1-4">
+      <div class="description description-right">
+        <p> <span class='emoji_large'>🐄</span> <b><span class='cattle_text'>66%</span></b> of 
+          <b><span class='cattle_text'>Cattles</span></b> exported are used as <b><span class='cattle_text'>Feeders</span></b>
+          whilist <span class='emoji_large'>🐏</span> <b><span class='sheep_text'>94%</span></b> of <b><span class='sheep_text'>Sheeps</span></b>
+          exported are <b><span class='sheep_text'>slaughtered</span></b>.
+        </p>
+      </div>
+    </div>
+</div>
+  
+   <br>
+
+   <h2 align="left">Comparison Between The Main Species Exports</h2>
+
+   <div class="pure-g">
+    <div class="pure-u-3-4">
+      <div id="vis3" class="vis-container"></div>
+    </div>
+    <div class="pure-u-1-4">
+      <div class="description description-right">
+        <p>    
+          The main Australian livestock species exported are the <b><span class='cattle_text'>Cattle</span></b> <br>and 
+          <b><span class='sheep_text'>Sheep</span></b>.
+          <br><br>
+
+          On average, <span class='emoji_large'>🐄</span><b> <span class='cattle_text'>274,428</span></b> heads of <b><span class='cattle_text'>Cattles</span></b> 
+          and  <span class='emoji_large'>🐏</span><b> <span class='sheep_text'>341,566</span></b> heads of <b><span class='sheep_text'>Sheeps</span></b> are 
+          exported <b>per quarter</b> from <b>years 2016 to 2020</b>.
+          <br><br>
+
+          The quantity of <b><span class='sheep_text'>Sheeps</span></b> exported mostly fall <b><span class='sheep_text'>below its average</span></b> since the <b>third quarter</b> of
+          <b>2018</b> with the <b>third quarter</b> of years <b>2018 to 2020</b> having the <b>lowest</b> quantities exported.
+        </p>
+      </div>
+    </div>
+  </div>
+    
+  <br>
+  
+  <h3>This visualisation was created by <a href="https://github.com/Kheryin/FIT3179-Project2" style="color: white;">Kher Yin H'ng</a> using the <a href="https://www.awe.gov.au/biosecurity-trade/export/controlled-goods/live-animals/live-animal-export-statistics/livestock-exports-by-market" style="color: white;">Australian Livestock Exports Data</a> from the <a href="https://www.awe.gov.au" style="color: white;">Department of Agriculture, Water and the Environment of the Australian Government</href>.</h3>
+  
   
 
   </div> <!-- end page -->
