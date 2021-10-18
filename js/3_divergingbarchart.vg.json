@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Cattle and Sheep Exports per Quarter from 2016 – 2020",
-  "width":700,
-  "height":300,
+  "title": {"text": "Cattle and Sheep Exports per Quarter from 2016 – 2020", "fontSize":16},
+  "width":800,
+  "height":450,
   "data": { "url": "https://raw.githubusercontent.com/Kheryin/FIT3179-Project2/main/data/AustraliaLivestockExportsData.csv"},
   
   "transform": [
@@ -18,7 +18,7 @@
   "mark": "bar",
   "encoding": {
     "y": {
-      "field": "Date","timeUnit":"yearquarter", "sort": "descending", "title": "Date", "axis": {"labelExpr": "datum.label[3]==1 ? '' : datum.label"}
+      "field": "Date","timeUnit":"yearquarter", "sort": "descending", "title": "Date", "axis": {"labelExpr": "datum.label[3]==1 ? '' : datum.label", "tickCount":4}
     },
     "x": {
       "aggregate": "sum", "field": "Quantity1",
@@ -29,7 +29,7 @@
     "color": {
       "field": "Species",
       "scale": {"range": ["#675193", "#ca8861"]},
-      "legend": {"orient": "right", "title": "Species"}
+      "legend": {"orient": "right", "title": "Species","padding":5}
     },
   "tooltip": [
 {"field": "Species", "type": "nominal"},
@@ -56,10 +56,10 @@
           "align": "center",
           "baseline": "bottom",
           "dx": 0,
-          "dy": -325,
+          "dy": -480,
           "y": "height",
-          "text": ["","Average (Sheep):", "341,566"],
-          "fontSize":9
+          "text": ["","Quarterly Average (Sheep):", "341,566"],
+          "fontSize":12
         }
         } 
     ]  
@@ -82,10 +82,10 @@
           "align": "center",
           "baseline": "bottom",
           "dx": 0,
-          "dy": -325,
+          "dy": -480,
           "y": "height",
-          "text": ["","Average (Cattle):", "274,428"],
-          "fontSize":9
+          "text": [""," Quarterly Average (Cattle):", "274,428"],
+          "fontSize":12
         }
         } 
     ]  
