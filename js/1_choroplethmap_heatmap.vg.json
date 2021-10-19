@@ -10,7 +10,7 @@
   ],
 "vconcat":[
 
-  {"title": {"text": "Total Livestock Exports by Countries (Filter Dates Using Heat Map Below)","fontSize":16},
+  {"title": {"text": "Total Livestock Exports to Destination Countries (Filter Dates Using Heat Map Below)","fontSize":16},
   "width": 800,
   "height":400,
   "projection": {"type": "equalEarth", "rotate":[-150,0,0]},
